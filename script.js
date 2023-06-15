@@ -11,6 +11,7 @@ function createGrid(width) {
 
         newDiv.classList.add("square");
         newDiv.style.cssText = `width: ${squareSize}px; height: ${squareSize}px`;
+        newDiv.style.backgroundColor = `rgb(${randomNumber(255)}, ${randomNumber(255)}, ${randomNumber(255)})`;
         container.appendChild(newDiv);
 
         newDiv.addEventListener("mouseover", (e) => {
@@ -18,7 +19,7 @@ function createGrid(width) {
         })
     }
 }
-createGrid(48);
+createGrid(36);
 
 function resizeSquaresSize(numSquares) {
     createGrid(numSquares);
@@ -41,3 +42,9 @@ resizeButton.addEventListener("click", () => {
     deleteAllSquares();
     resizeSquaresSize(value);
 })
+
+function randomNumber(number) {
+    let value = Math.floor((Math.random() * number) + 1);
+
+    return value;
+}
