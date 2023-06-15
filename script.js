@@ -1,6 +1,7 @@
 console.log("Start");
 
 const container = document.querySelector(".container");
+const info = document.querySelector(".info");
 const initialContainerWidth = container.offsetWidth;
 
 function createGrid(width) {
@@ -22,11 +23,12 @@ function createGrid(width) {
         })
     }
 }
-createGrid(36);
 
 function resizeSquaresSize(numSquares) {
     createGrid(numSquares);
+    updateSizeInfo(numSquares);
 }
+resizeSquaresSize(36);
 
 function deleteAllSquares() {
     const squares = document.querySelectorAll(".square");
@@ -34,6 +36,10 @@ function deleteAllSquares() {
     squares.forEach(curr => {
         curr.remove();
     });
+}
+
+function updateSizeInfo(width) {
+    info.textContent = `${width} x ${width}`;
 }
 
 const resizeButton = document.querySelector(".resizeSquares");
