@@ -12,10 +12,13 @@ function createGrid(width) {
         newDiv.classList.add("square");
         newDiv.style.cssText = `width: ${squareSize}px; height: ${squareSize}px`;
         newDiv.style.backgroundColor = `rgb(${randomNumber(255)}, ${randomNumber(255)}, ${randomNumber(255)})`;
+        newDiv.dataset.opacity = 0;
         container.appendChild(newDiv);
 
         newDiv.addEventListener("mouseover", (e) => {
-            e.target.style.opacity = 1;
+            let value = +e.target.style.opacity;
+            value += .1;
+            e.target.style.opacity = value;
         })
     }
 }
