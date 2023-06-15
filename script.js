@@ -32,6 +32,12 @@ function deleteAllSquares() {
     });
 }
 
-window.addEventListener("click", () => {
+const resizeButton = document.querySelector(".resizeSquares");
+
+resizeButton.addEventListener("click", () => {
+    let value = prompt("How many squares per side would you like?");
+    if(value > 100) value = 100;
+
     deleteAllSquares();
+    resizeSquaresSize(value);
 })
