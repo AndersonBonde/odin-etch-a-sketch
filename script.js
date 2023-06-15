@@ -1,12 +1,16 @@
 console.log("Start");
 
 const container = document.querySelector(".container");
+const initialContainerWidth = container.offsetWidth;
 
-function createGrid() {
-    for(let i = 0; i < 16*16; i++) {
+function createGrid(width) {
+    const squareSize = initialContainerWidth / width;
+
+    for(let i = 0; i < width * width; i++) {
         const newDiv = document.createElement("div");
-        
+
         newDiv.classList.add("square");
+        newDiv.style.cssText = `width: ${squareSize}px; height: ${squareSize}px`;
         container.appendChild(newDiv);
 
         newDiv.addEventListener("mouseover", (e) => {
@@ -14,5 +18,20 @@ function createGrid() {
         })
     }
 }
-createGrid();
+createGrid(48);
 
+function resizeSquaresSize(numSquares) {
+    createGrid(numSquares);
+}
+
+function deleteAllSquares() {
+    const squares = document.querySelectorAll(".square");
+
+    squares.forEach(curr => {
+        curr.remove();
+    });
+}
+
+window.addEventListener("click", () => {
+    deleteAllSquares();
+})
